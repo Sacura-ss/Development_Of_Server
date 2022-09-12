@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    container_name: db
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./databases:/docker-entrypoint-initdb.d
+      - db_volume:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "9906:3306"  
+
+  php-apache:
+    container_name: php-apache
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src/html:/var/www/html
+    links:
+      - db
+
+volumes:
+  db_volume:
