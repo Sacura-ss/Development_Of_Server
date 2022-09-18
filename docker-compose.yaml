@@ -23,5 +23,29 @@ services:
     links:
       - db
 
+  drawer:
+    container_name: drawer
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./drawer:/var/www/html
+
+  sort:
+    container_name: sort
+    build: .
+    ports:
+      - "8081:80"
+    volumes:
+      - ./sort:/var/www/html
+
+  bash:
+    container_name: bash
+    build: .
+    ports:
+      - "8082:80"
+    volumes:
+      - ./bash:/var/www/html
+
 volumes:
   db_volume:
