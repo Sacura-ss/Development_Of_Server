@@ -19,7 +19,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./src/html:/var/www/html
+      - ./src/html/practice1:/var/www/html
     links:
       - db
 
@@ -29,7 +29,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./drawer:/var/www/html
+      - ./src/html/practice2/drawer:/var/www/html
 
   sort:
     container_name: sort
@@ -37,7 +37,7 @@ services:
     ports:
       - "8081:80"
     volumes:
-      - ./sort:/var/www/html
+      - ./src/html/practice2/sort:/var/www/html
 
   bash:
     container_name: bash
@@ -45,7 +45,7 @@ services:
     ports:
       - "8082:80"
     volumes:
-      - ./bash:/var/www/html
+      - ./src/html/practice2/bash:/var/www/html
 
 volumes:
   db_volume:
