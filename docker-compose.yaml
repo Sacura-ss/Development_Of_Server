@@ -13,50 +13,28 @@ services:
     ports:
       - "9906:3306"  
 
+  php-apache:
+    container_name: php-apache
+    build: php-apache/
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./conf/apache:/etc/apache
+    links:
+      - db
+
   nginx:
+    container_name: nginx
     image: nginx
     volumes:
-      - ./docker/nginx/conf.d/default.nginx:/etc/nginx/conf.d/default.conf
-      - ./src/html/practice3:/var/www/html/
+      - ./src:/usr/share/nginx/html
+      - ./conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
     ports:
       - 8000:80
     links:
       - php-apache
       - db
-
-  php-apache:
-    container_name: php-apache
-    build: .
-    ports:
-      - "8080:80"
-    volumes:
-      - ./src/html/practice1:/var/www/html
-    links:
-      - db
-
-  drawer:
-    container_name: drawer
-    build: .
-    ports:
-      - "8080:80"
-    volumes:
-      - ./src/html/practice2/drawer:/var/www/html
-
-  sort:
-    container_name: sort
-    build: .
-    ports:
-      - "8081:80"
-    volumes:
-      - ./src/html/practice2/sort:/var/www/html
-
-  bash:
-    container_name: bash
-    build: .
-    ports:
-      - "8082:80"
-    volumes:
-      - ./src/html/practice2/bash:/var/www/html
 
 volumes:
   db_volume:
