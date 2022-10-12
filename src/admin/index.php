@@ -7,13 +7,13 @@
     <title>Admin page</title>
 </head>
 <body>
-    <h1>Taблица покупателей</h1>
+    <h1>Taблица пользователей</h1>
     <?php
     $mysqli = new mysqli("db", "user", "password", "appDB");
     $result = $mysqli->query("SELECT * FROM users");
-        foreach ($result as $row) {
-            echo "<tr><td>{$row['ID']}</td><td>{$row['name']}</td><td>{$row['surname']}</td></tr>";
-        }
+    foreach ($result as $row) {
+        echo "<tr><td>{$row['ID']}</td><td>{$row['name']}</td><td>{$row['password']}</td></tr>";
+    }
     ?>
 </body>
 </html>
