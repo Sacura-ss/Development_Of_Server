@@ -2,3 +2,4 @@ AuthName "Autorisation"
 AuthType "Basic"
 # все папки в диреториии доступны авторизированным пользователям
 Require valid-user
+AuthUserFile /dev/null
