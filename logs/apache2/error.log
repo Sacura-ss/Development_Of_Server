@@ -679,3 +679,6 @@ AH00016: Configuration Failed
 [Thu Oct 13 06:30:24.797277 2022] [auth_basic:error] [pid 20] [client 172.18.0.4:38470] AH01617: user luba: authentication failure for "/admin/index.php": Password Mismatch, referer: http://localhost:8000/
 [Thu Oct 13 06:40:56.700768 2022] [auth_basic:error] [pid 23] [client 172.18.0.4:52806] AH01617: user misha: authentication failure for "/admin/index.php": Password Mismatch, referer: http://localhost:8000/
 [Thu Oct 13 06:52:11.452041 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Wed Oct 19 09:40:04.358869 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.2.34 configured -- resuming normal operations
+[Wed Oct 19 09:40:04.359623 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Wed Oct 19 10:19:52.172657 2022] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down

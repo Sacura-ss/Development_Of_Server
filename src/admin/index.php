@@ -11,9 +11,16 @@
     <?php
     $mysqli = new mysqli("db", "user", "password", "appDB");
     $result = $mysqli->query("SELECT * FROM users");
+    echo "<table><tr><th>ID</th><th>Имя</th><th>Пароль</th></tr>";
     foreach ($result as $row) {
-        echo "<tr><td>{$row['ID']}</td><td>{$row['name']}</td><td>{$row['password']}</td></tr>";
+        echo "<tr>";
+        echo "<td>" . $row['ID'] . "</td>";
+        echo "<td>" . $row['username'] . "</td>";
+        echo "<td>" . $row['password'] . "</td>";
+        echo "</tr>";
     }
+    echo "</table>";
+    $result->free();
     ?>
 </body>
 </html>
