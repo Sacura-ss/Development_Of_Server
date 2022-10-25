@@ -48,4 +48,37 @@ function addPost($mysqli, $data) {
     echo json_encode($answer);
 }
 
+function  updateSea($mysqli, $id, $data) {
+    $title = $data['title'];
+    $body = $data['body'];
+
+    mysqli_query($mysqli, "UPDATE `seas` SET  `seasname` = '$title', `dat` = '$body' WHERE `ID` = '$id'");
+
+    // код 200 - успешно
+    http_response_code(200);
+
+    // выводим ответ о создании и id созданной сущности
+    $answer = [
+        "status" => true,
+        "message" => "Sea is updated"
+    ];
+
+    echo json_encode($answer);
+}
+
+function deleteSea($mysqli, $id) {
+    mysqli_query($mysqli, "DELETE FROM `seas` WHERE `ID` = '$id'");
+
+    // код 200 - успешно
+    http_response_code(200);
+
+    // выводим ответ о создании и id созданной сущности
+    $answer = [
+        "status" => true,
+        "message" => "Sea is deleted"
+    ];
+
+    echo json_encode($answer);
+}
+
 ?>
