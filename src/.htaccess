@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+# обращаемся к index.php и заносим в параметр q путь после основного домена запроса
+RewriteRule ^(.+)$ index.php?q=$1 [L,QSA]
