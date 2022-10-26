@@ -32,6 +32,9 @@
                 getSeas($mysqli);
             }
         }
+        if ($type === 'adm') {
+            getUsers($mysqli);
+        }
     } elseif ($method === 'POST') {
         if ($type === 'seas') {
             addPost($mysqli, $_POST);

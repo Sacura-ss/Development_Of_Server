@@ -81,4 +81,15 @@ function deleteSea($mysqli, $id) {
     echo json_encode($answer);
 }
 
+function getUsers($mysqli) {
+    $results = $mysqli->query("SELECT * FROM users");
+    $resultsList = [];
+    // перебираем список результатов и заносим в массив
+    while($result = mysqli_fetch_assoc($results)) {
+        $resultsList[] = $result;
+    }
+    // переводим  json
+    echo json_encode($resultsList, $flags = JSON_UNESCAPED_UNICODE);
+}
+
 ?>

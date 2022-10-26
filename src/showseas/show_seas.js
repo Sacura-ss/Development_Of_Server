@@ -59,6 +59,7 @@ function selectSea(id, title, body) {
 }
 
 async function updateSea() {
+    console.log('a');
     const title = document.getElementById('title-edit').value,
         body = document.getElementById('body-edit').value;
 
@@ -72,8 +73,13 @@ async function updateSea() {
         body: JSON.stringify(data)
     });
 
+    console.log('aa');
     let resData = res.json();
 
+    console.log(resData.status);
+
+    getSeas()
+    console.log('aaa');
     if (resData.status === true) {
         await getSeas();
     }
