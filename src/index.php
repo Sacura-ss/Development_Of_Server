@@ -23,40 +23,44 @@
     $id = $params[1];
 
     // определяем функциональность в зависимости от запроса
-    if ($method === 'GET') {
-        if ($type === 'seas') {
-            // существует ли id
-            if (isset($id)) {
-                getSea($mysqli, $id);
-            } else {
-                getSeas($mysqli);
+    switch ($method) {
+        case 'GET':
+            if ($type === 'seas') {
+                // существует ли id
+                if (isset($id)) {
+                    getSea($mysqli, $id);
+                } else {
+                    getSeas($mysqli);
+                }
             }
-        }
-        if ($type === 'adm') {
-            getUsers($mysqli);
-        }
-    } elseif ($method === 'POST') {
-        if ($type === 'seas') {
-            addPost($mysqli, $_POST);
-        }
-    } elseif ($method === 'PATCH') {
-        if ($type === 'seas') {
-            // существует ли id
-            if (isset($id)) {
-                // получаем данные с метода patch
-                $data = file_get_contents('php://input');
-                // запрос пишется raw в шормате json => преобразуем в массив
-                $data = json_decode($data, true);
-                updateSea($mysqli, $id, $data);
+            if ($type === 'adm') {
+                getUsers($mysqli);
             }
-        }
-    } elseif ($method === 'DELETE') {
-        if ($type === 'seas') {
-            // существует ли id
-            if (isset($id)) {
-                deleteSea($mysqli, $id);
+            break;
+        case 'POST':
+            if ($type === 'seas') {
+                addPost($mysqli, $_POST);
+            } 
+            break;
+        case 'PATCH':
+            if ($type === 'seas') {
+                // существует ли id
+                if (isset($id)) {
+                    // получаем данные с метода patch
+                    $data = file_get_contents('php://input');
+                    // запрос пишется raw в формате json => преобразуем в массив
+                    $data = json_decode($data, true);
+                    updateSea($mysqli, $id, $data);
+                }
             }
-        }
+            break;
+        case 'DELETE':
+            if ($type === 'seas') {
+                // существует ли id
+                if (isset($id)) {
+                    deleteSea($mysqli, $id);
+                }
+            }
     }
 
 ?>
