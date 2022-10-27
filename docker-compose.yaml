@@ -6,7 +6,7 @@ services:
     image: mysql:latest
     volumes:
       - ./databases:/docker-entrypoint-initdb.d
-      - db_vol2:/var/lib/mysql
+      - db_vol6:/var/lib/mysql
     command: ["mysqld", "--default-authentication-plugin=mysql_native_password"]
     environment:
       - MYSQL_ROOT_PASSWORD=password
@@ -42,4 +42,4 @@ services:
       - php-apache
 
 volumes:
-  db_vol2:
+  db_vol6:

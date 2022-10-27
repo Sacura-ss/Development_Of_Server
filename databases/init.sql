@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS appDB;
 CREATE USER IF NOT EXISTS 'user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
-GRANT SELECT,UPDATE,INSERT ON appDB.* TO 'user'@'%';
+GRANT SELECT,UPDATE,INSERT,DELETE ON appDB.* TO 'user'@'%';
 FLUSH PRIVILEGES;
 
 USE appDB;
@@ -23,6 +23,9 @@ INSERT INTO seas value (NULL, "Азовское море", "12.12.2022-12.01.202
 INSERT INTO seas value (NULL, "Мраморное море", "12.12.2022-12.01.2023");
 INSERT INTO seas value (NULL, "Восточно-Китайское море", "12.12.2022-12.01.2023");
 INSERT INTO seas value (NULL, "Карибское море", "12.12.2022-12.01.2023");
+
+INSERT INTO users value (NULL,"luba", "$apr1$4EoqnqZ3$C8dHTFqyxg6b9hR9kTzAv0");
+INSERT INTO users value (NULL,"misha", "$apr1$qDC0nkUp$y5.n/577GsAjwbEJ.Azqp0");
 
 
 

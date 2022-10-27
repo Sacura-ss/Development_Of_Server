@@ -25,7 +25,7 @@
     // определяем функциональность в зависимости от запроса
     switch ($method) {
         case 'GET':
-            if ($type === 'seas') {
+            if ($type == 'seas') {
                 // существует ли id
                 if (isset($id)) {
                     getSea($mysqli, $id);
