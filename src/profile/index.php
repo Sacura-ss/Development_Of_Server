@@ -1,13 +1,11 @@
 <?php
-
-ini_set('session.save_handler', 'redis');
-echo '' . ini_get('session.save_handler');
-
-//session_start();
+session_start();
 
 if ($_SESSION['user']) {
     header('Location: profile.php');
 }
+
+echo session_id();
 
 echo '<pre>';
 print_r($_SESSION);

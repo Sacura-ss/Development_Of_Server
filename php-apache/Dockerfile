@@ -14,5 +14,6 @@ RUN echo "ServerName localhost" | tee /etc/apache2/conf-available/fqdn.conf
 RUN a2enconf fqdn
 
 # Добавим свой php.ini, можем в нем определять свои значения конфига
-ADD php.ini /etc/php5/apache2/php.ini
+ADD php.ini /usr/local/etc/php/conf.d/docker-php-ext-redis.ini
+#/etc/php5/apache2/php.ini
 #/usr/local/etc/php/conf.d/40-custom.ini

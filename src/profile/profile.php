@@ -4,16 +4,16 @@ if (!$_SESSION['user']) {
     header('Location: index.php');
 }
 
+echo session_id();
+
 echo '<pre>';
 print_r($_SESSION);
 echo '</pre>';
 
-echo session_id();
-
 $redis = new Redis();
 $redis->pconnect('redis', 6379);
 
-$redis->set(session_id(), $_SESSION['user']);
+//$redis->set(session_id(), $_SESSION['user']);
 
 //Get list of all keys. This creates an array of keys from the redis-cli output of "KEYS *"
 $list = $redis->keys("*");
