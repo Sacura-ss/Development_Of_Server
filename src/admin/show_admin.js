@@ -1,10 +1,10 @@
 async function getUsers() {
     let res = await fetch('http://localhost:8000/adm');
-    let users = await res.json();
+    let admin = await res.json();
 
     document.querySelector('.cards_wrap').innerHTML = '';
 
-    users.forEach((user) => {
+    admin.forEach((user) => {
         console.log(user);
         document.querySelector('.cards_wrap').innerHTML +=
         

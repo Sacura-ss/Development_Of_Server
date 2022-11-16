@@ -12,6 +12,6 @@
             <div class="header">Taблица пользователей</div>
             <div class="cards_wrap"></div>
     </div>
-<script src="show_users.js"></script>  
+<script src="show_admin.js"></script>  
 </body>
 </html>

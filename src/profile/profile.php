@@ -1,0 +1,34 @@
+<?php
+session_start();
+if (!$_SESSION['user']) {
+    header('Location: index.php');
+}
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация и регистрация</title>
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
+</head>
+<body>
+    <!-- Профиль -->
+    <header>
+        <div class = "name">Хочу на море</div>
+        <ul class = "menu">
+		    <li><a href = "../home/index.html">Домой</a></li>
+        </ul>
+    </header>
+
+    <div class="body">
+        <form>
+            <img src="<?= $_SESSION['user']['avatar'] ?>" width="200" alt="">
+            <h2 style="margin: 10px 0;"><?= $_SESSION['user']['full_name'] ?></h2>
+            <a href="#"><?= $_SESSION['user']['email'] ?></a>
+            <a href="session/logout.php" class="logout">Выход</a>
+        </form>
+    </div>
+
+</body>
+</html>

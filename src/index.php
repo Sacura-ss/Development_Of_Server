@@ -34,7 +34,7 @@
                 }
             }
             if ($type === 'adm') {
-                getUsers($mysqli);
+                getAdmin($mysqli);
             }
             break;
         case 'POST':
