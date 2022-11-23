@@ -31,7 +31,7 @@ services:
     container_name: php-apache
     build: php-apache/
     volumes:
-      - ./src:/var/www/html
+      - ./src:/var/www/html:rw
       - ./conf/apache2/sites-enabled/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
       - ./logs/apache2:/var/log/apache2
     depends_on:

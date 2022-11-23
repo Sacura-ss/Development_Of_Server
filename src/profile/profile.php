@@ -4,17 +4,17 @@ if (!$_SESSION['user']) {
     header('Location: index.php');
 }
 
-echo session_id();
+//$redis->set(session_id(), $_SESSION['user']);
+echo '<b>Идентификатор сессии </b><br>'.session_id();
 
-echo '<pre>';
+echo '<pre><br><b>Файлы сессии</b><br>';
 print_r($_SESSION);
-echo '</pre>';
+echo '</pre><br>';
 
 $redis = new Redis();
 $redis->pconnect('redis', 6379);
 
-//$redis->set(session_id(), $_SESSION['user']);
-
+echo '<b>База данных Redis</b><br>';
 //Get list of all keys. This creates an array of keys from the redis-cli output of "KEYS *"
 $list = $redis->keys("*");
 //Optional: Sort Keys alphabetically
@@ -26,6 +26,7 @@ foreach ($list as $key)
 	//Print Key/value Pairs
 	echo "<b>Key:</b> $key <br /><b>Value:</b> $value <br /><br />";
 }
+
 ?>
 
 <!doctype html>
@@ -51,6 +52,17 @@ foreach ($list as $key)
             <a href="#"><?= $_SESSION['user']['email'] ?></a>
             <a href="session/logout.php" class="logout">Выход</a>
         </form>
+        <form action="session/upload_file.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" size="50" />
+            <br />
+            <input type="submit" value="Upload" />
+        </form>
+        <?php
+            if ($_SESSION['message']) {
+                echo '<p class="msg"> ' . $_SESSION['message'] . ' </p>';
+            }
+            unset($_SESSION['message']);
+        ?>
     </div>
 
 </body>

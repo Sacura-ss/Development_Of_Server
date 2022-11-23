@@ -5,15 +5,16 @@ if ($_SESSION['user']) {
     header('Location: profile.php');
 }
 
-echo session_id();
+echo '<b>Идентификатор сессии </b><br>'.session_id();
 
-echo '<pre>';
+echo '<pre><br><b>Файлы сессии</b><br>';
 print_r($_SESSION);
-echo '</pre>';
+echo '</pre><br>';
 
 $redis = new Redis();
 $redis->pconnect('redis', 6379);
 
+echo '<b>База данных Redis</b><br>';
 //Get list of all keys. This creates an array of keys from the redis-cli output of "KEYS *"
 $list = $redis->keys("*");
 //Optional: Sort Keys alphabetically
