@@ -27,6 +27,32 @@ foreach ($list as $key)
 	echo "<b>Key:</b> $key <br /><b>Value:</b> $value <br /><br />";
 }
 
+if (isset($_POST['submit'])) {
+ 
+    $name = $_POST['name'];
+
+    if (isset($_FILES['pdf_file']['name']))
+    {
+      $file_name = $_FILES['pdf_file']['name'];
+      $file_tmp = $_FILES['pdf_file']['tmp_name'];
+
+      move_uploaded_file($file_tmp,"./uploads_pdf/".$file_name);
+
+    }
+    else
+    {
+       ?>
+        <div class=
+        "alert alert-danger alert-dismissible
+        fade show text-center">
+          <a class="close" data-dismiss="alert"
+             aria-label="close">×</a>
+          <strong>Failed!</strong>
+              File must be uploaded in PDF format!
+        </div>
+      <?php
+    }
+}
 ?>
 
 <!doctype html>
@@ -52,10 +78,28 @@ foreach ($list as $key)
             <a href="#"><?= $_SESSION['user']['email'] ?></a>
             <a href="session/logout.php" class="logout">Выход</a>
         </form>
-        <form action="session/upload_file.php" method="post" enctype="multipart/form-data">
+        <!--<form action="session/upload_file.php" method="post" enctype="multipart/form-data">
             <input type="file" name="file" size="50" />
             <br />
             <input type="submit" value="Upload" />
+        </form>-->
+        <br>
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-input py-2">
+                <div class="form-group">
+                <input type="text" class="form-control" name="name"
+                        placeholder="Enter your name" required>
+                </div>                                 
+                <div class="form-group">
+                <input type="file" name="pdf_file"
+                        class="form-control" accept=".pdf"
+                        title="Upload PDF"/>
+                </div>
+                <div class="form-group">
+                <input type="submit" class="btnRegister"
+                        name="submit" value="Submit">
+                </div>
+            </div>
         </form>
         <?php
             if ($_SESSION['message']) {
